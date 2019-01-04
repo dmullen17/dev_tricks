@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dev Tricks</title>
+</head>
+<body>
+    <p onClick='makeGreen()'>Paragraph text</p> <!-- This is the same as adding an event listener -->
+</body>
+<script>
+    console.log('hello');
+    
+    function makeGreen() {
+        const p = document.querySelector('p');
+        p.style.color = '#BADA55'; 
+        p.style.fontSize = '50px';
+    }
+    
+    // Interpolation 
+    const str = 'string';
+    console.log('hello I am a %s value.', str);
+    console.log(`hello I am a ${str} value.`);
+    
+    // Styled messages 
+    console.log('%c hello I am some text.', 'font-size: 50px; background-color: red; text-shadow: 10px 10px 0 blue;')
+    
+    // warnings
+    console.warn('oh no!!!');
+    
+    // errors 
+    console.error('shit!'); 
+    
+    // info
+    console.info('crocodiles eat 3 people per year');
+    
+    // Testing 
+    // evaluates if T/F and prints the message if false 
+    console.assert(1===1, 'That is wrong!');
+    console.assert(1===2, 'That is wrong!')
+    // More useful example of this 
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'Does not contain class "ouch"');
+    
+    // Clearing
+    console.clear()
+    
+    // Grouping together 
+    const dogs = [{name: 'Clifford', age: 2}, {name: 'Rusty', age: 4}];
+    dogs.forEach(dog => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log('more error messages!');
+        console.groupEnd(`${dog.name}`);
+    })
+    
+    // count 
+    // count how many times something appears 
+    console.count('Dom');
+    console.count('Dom');
+    console.count('Dom');
+    console.count('hi');
+    console.count('Dom');
+    
+    // time 
+    console.time('fetching data');
+    fetch('https://rickandmortyapi.com/api/character/')
+        .then(data => data.json())
+        .then(data => {
+            console.log(data);
+            console.timeEnd('fetching data');
+    });
+    
+    // table
+    console.table(dogs);
+
+    
+    
+    
+</script>
+</html>
